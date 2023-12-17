@@ -1,30 +1,18 @@
-# React + TypeScript + Vite
+A micro-controller based synthesizer leveraging the Web Serial API.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Description
+This web application allows for generation of an audio oscillating audio signal, which can be modified through nodes as exposed by the Web Audio API. Operations can be applied via dedicated knob inputs via a micro controller (e.g. Arduino or similiar)
 
-Currently, two official plugins are available:
+<img width="1912" alt="Bildschirmfoto 2023-12-17 um 12 26 48" src="https://github.com/leonmeka/synth/assets/15350962/1c0a09df-065c-4648-86d1-9e9b52de2f7a">
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Dependencies:
+Run `npm install` to install the required dependencies.
 
-## Expanding the ESLint configuration
+## Preparing the micro controller:
+- Arduino: Upload the script in ./sketch/arduino onto the micro controller
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Circuit
+[TBD]
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Usage
+Run `npm run dev` to start the application. Connect your micro controller via usb and click "connect".
