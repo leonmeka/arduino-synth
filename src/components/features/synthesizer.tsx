@@ -45,8 +45,8 @@ interface SynthValues {
   highpass: number;
 }
 
-const normalize = (value: number, min: number, max: number) => {
-  return value * (max - min) + min;
+const normalize = (value: number, min: number, max: number): number => {
+  return +(value * (max - min) + min).toFixed(0);
 };
 
 const readData = async (
@@ -67,6 +67,7 @@ const readData = async (
       const json = JSON.parse(string);
 
       if (json.frequency && json.gain && json.lowpass && json.highpass) {
+        console.log(json);
         action(json);
       }
     } catch (e) {
@@ -134,10 +135,22 @@ export const Synthesizer = () => {
         </div>
 
         <div className="flex gap-4">
-          <RadialKnob label={"Frequency"} value={values.frequency}></RadialKnob>
-          <RadialKnob label={"Gain"} value={values.gain}></RadialKnob>
-          <RadialKnob label={"Lowpass"} value={values.lowpass}></RadialKnob>
-          <RadialKnob label={"Highpass"} value={values.highpass}></RadialKnob>
+          <RadialKnob
+            label={"Frequency"}
+            value={+values.frequency.toFixed(0)}
+          ></RadialKnob>
+          <RadialKnob
+            label={"Gain"}
+            value={+values.gain.toFixed(0)}
+          ></RadialKnob>
+          <RadialKnob
+            label={"Lowpass"}
+            value={+values.lowpass.toFixed(0)}
+          ></RadialKnob>
+          <RadialKnob
+            label={"Highpass"}
+            value={+values.highpass.toFixed(0)}
+          ></RadialKnob>
         </div>
       </CardContent>
     </Card>
