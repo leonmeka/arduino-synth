@@ -52,11 +52,9 @@ void loop() {
   if(switch8 == 0 && switch9 == 0){
     synthValues.type = "square";
   }
-
-  Serial.println(switch8);
-  Serial.println(switch9);
   
   sendValues(synthValues);
+  delay(500);
 }
 
 void sendValues(const SynthValues &values) {
