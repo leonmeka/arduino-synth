@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import {
   Dispatch,
   SetStateAction,
@@ -96,6 +97,7 @@ export const Synthesizer = () => {
       return;
     }
 
+    // @ts-expect-error
     const reader = port.readable.getReader();
     readData(reader, setValues);
   }, [port]);

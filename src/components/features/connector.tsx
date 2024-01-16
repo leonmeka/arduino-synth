@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+
 import { useContext, useState } from "react";
 import { Button } from "../ui/button";
 import { SynthContext } from "@/App";
@@ -16,6 +18,8 @@ export const Connector = () => {
 
   const connect = async () => {
     try {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
       const selection = await navigator.serial.requestPort({
         filters: config.FILTERS,
       });
@@ -34,6 +38,7 @@ export const Connector = () => {
 
       {port && (
         <p className="text-sm">
+          {/*   @ts-expect-error */}
           Connected to Port <code>[{port.getInfo().usbProductId}]</code>
         </p>
       )}

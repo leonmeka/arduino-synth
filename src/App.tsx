@@ -1,15 +1,18 @@
-import { createContext, useState, Dispatch } from "react";
+import { createContext, useState } from "react";
 import { AppShell } from "./components/app-shell";
 import SerialPort from "serialport";
 
-interface SynthContextValue {
+export interface SynthContextValue {
   port: SerialPort | undefined;
-  setPort: Dispatch<React.SetStateAction<SerialPort | undefined>>;
+  setPort: (port: SerialPort | undefined) => void;
 }
 
-export const SynthContext = createContext<SynthContextValue | undefined>(
-  undefined
-);
+const defaultValue: SynthContextValue = {
+  port: undefined,
+  setPort: () => {},
+};
+
+export const SynthContext = createContext<SynthContextValue>(defaultValue);
 
 export default function App() {
   const [port, setPort] = useState<SerialPort>();
