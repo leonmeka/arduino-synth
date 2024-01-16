@@ -64,7 +64,16 @@ const readData = async (
 
     try {
       const string = new TextDecoder().decode(value);
-      action(JSON.parse(string));
+      const values = JSON.parse(string);
+
+      if (
+        !isNaN(values.frequency) ||
+        !isNaN(values.gain) ||
+        !isNaN(values.lowpass) ||
+        !isNaN(values.highpass)
+      ) {
+        action(values);
+      }
     } catch (e) {
       continue;
     }
@@ -92,15 +101,6 @@ export const Synthesizer = () => {
   }, [port]);
 
   useEffect(() => {
-    if (
-      !values.frequency ||
-      !values.gain ||
-      !values.lowpass ||
-      !values.highpass
-    ) {
-      return;
-    }
-
     oscillatorNode.type = values.type;
     oscillatorNode.frequency.value = normalize(values.frequency, 0, 440);
     lowpassFilterNode.frequency.value = normalize(values.lowpass, 0, 10000);

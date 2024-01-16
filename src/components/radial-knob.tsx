@@ -24,7 +24,7 @@ export const RadialKnob = ({ label, value }: RadialKnobProps) => {
           style={knobStyle}
         ></div>
         <p className="absolute top-0 left-0 w-full h-full flex items-center justify-center text-sm text-white">
-          {percentage}%
+          {percentage.toFixed(0)}%
         </p>
       </div>
     </div>
