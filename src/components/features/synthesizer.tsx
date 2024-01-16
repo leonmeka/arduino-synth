@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   Dispatch,
   SetStateAction,
@@ -56,27 +55,18 @@ const readData = async (
   let running = true;
   while (running) {
     const { value, done } = await reader.read();
+
     if (done) {
       reader.releaseLock();
       running = false;
-
-      // TODO: Re-read signal
       break;
     }
 
     try {
       const string = new TextDecoder().decode(value);
-      const json = JSON.parse(string);
-
-      if (!json.frequency || !json.gain || !json.lowpass || !json.highpass) {
-        return;
-      }
-
-      console.log(json);
-
-      action(json);
+      action(JSON.parse(string));
     } catch (e) {
-      console.error(e);
+      continue;
     }
   }
 };
@@ -102,6 +92,15 @@ export const Synthesizer = () => {
   }, [port]);
 
   useEffect(() => {
+    if (
+      !values.frequency ||
+      !values.gain ||
+      !values.lowpass ||
+      !values.highpass
+    ) {
+      return;
+    }
+
     oscillatorNode.type = values.type;
     oscillatorNode.frequency.value = normalize(values.frequency, 0, 440);
     lowpassFilterNode.frequency.value = normalize(values.lowpass, 0, 10000);
@@ -135,7 +134,7 @@ export const Synthesizer = () => {
             className="w-full"
             disabled
             type="text"
-            value={values.type.toUpperCase()}
+            value={values.type?.toUpperCase() ?? 0}
           />
         </div>
 

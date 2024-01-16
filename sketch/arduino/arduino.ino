@@ -14,6 +14,8 @@ const float initialGain = 0.1;
 const float initialLowpass = 0.1;
 const float initialHighpass = 0.1;
 
+const float MAX_ANALOG_VALUE = 1023.0;
+
 SynthValues synthValues;
 
 void setup() {
@@ -35,10 +37,10 @@ void setup() {
 }
 
 void loop() {
-  synthValues.frequency = analogRead(A0) / 1023.0;
-  synthValues.gain = analogRead(A1) / 1023.0;
-  synthValues.lowpass = analogRead(A2) / 1023.0;
-  synthValues.highpass = analogRead(A3) / 1023.0;
+  synthValues.frequency = analogRead(A0) / MAX_ANALOG_VALUE;
+  synthValues.gain = analogRead(A1) / MAX_ANALOG_VALUE;
+  synthValues.lowpass = analogRead(A2) / MAX_ANALOG_VALUE;
+  synthValues.highpass = analogRead(A3) / MAX_ANALOG_VALUE;
 
   int switch8 = digitalRead(8);
   int switch9 = digitalRead(9);
@@ -54,7 +56,6 @@ void loop() {
   }
   
   sendValues(synthValues);
-  delay(500);
 }
 
 void sendValues(const SynthValues &values) {
