@@ -129,9 +129,9 @@ export const Synthesizer = () => {
     oscillatorNode2.type = values.type;
 
     oscillatorNode1.frequency.value = normalize(values.wave1_frequency, 0, 440);
-    gainNode1.gain.value = normalize(values.wave1_gain, 0, 100);
+    gainNode1.gain.value = normalize(values.wave1_gain, 0, 1);
     oscillatorNode2.frequency.value = normalize(values.wave2_frequency, 0, 440);
-    gainNode2.gain.value = normalize(values.wave2_gain, 0, 100);
+    gainNode2.gain.value = normalize(values.wave2_gain, 0, 1);
 
     if (!isPlaying && (values.wave1_gain > 0 || values.wave2_gain > 0)) {
       oscillatorNode1.start();
