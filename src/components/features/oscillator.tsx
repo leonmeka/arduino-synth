@@ -3,9 +3,10 @@ import { Card, CardContent } from "../ui/card";
 
 interface OscillatorProps {
   analyser: AnalyserNode;
+  color?: "gray" | "orange";
 }
 
-export const Oscillator = ({ analyser }: OscillatorProps) => {
+export const Oscillator = ({ analyser, color }: OscillatorProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number | null>(null);
 
@@ -24,7 +25,7 @@ export const Oscillator = ({ analyser }: OscillatorProps) => {
 
       context.clearRect(0, 0, canvas.width, canvas.height);
       context.lineWidth = 1;
-      context.strokeStyle = "#3498db";
+      context.strokeStyle = color === "orange" ? "#F97316" : "#718096";
       context.beginPath();
 
       const sliceWidth = (canvas.width * 1.0) / bufferLength;
@@ -58,7 +59,7 @@ export const Oscillator = ({ analyser }: OscillatorProps) => {
 
       analyser.disconnect();
     };
-  }, [analyser]);
+  }, [analyser, color]);
 
   return (
     <Card>

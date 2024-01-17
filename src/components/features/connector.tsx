@@ -16,9 +16,13 @@ export const Connector = () => {
   const [canUseSerial] = useState(() => "serial" in navigator);
   const { port, setPort } = useContext(SynthContext);
 
-  const connect = async () => {
+  const handleConnect = async () => {
+    if (port) {
+      window.location.reload();
+      return;
+    }
+
     try {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-expect-error
       const selection = await navigator.serial.requestPort({
         filters: config.FILTERS,
@@ -32,9 +36,11 @@ export const Connector = () => {
 
   return (
     <div className="flex justify-between items-center gap-5">
-      <Button onClick={connect} disabled={!!port || !canUseSerial}>
-        {port ? "Connected" : "Connect"}
-      </Button>
+      {
+        <Button onClick={handleConnect} disabled={!canUseSerial}>
+          {port ? "Disconnect" : "Connect"}
+        </Button>
+      }
 
       {port && (
         <p className="text-sm">

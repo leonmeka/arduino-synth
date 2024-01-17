@@ -9,7 +9,7 @@ export const RadialKnob = ({ label, value }: RadialKnobProps) => {
   const knobStyle = {
     background: `conic-gradient(
       from -90deg,
-      #3498db ${percentage}%,
+      #F97316 ${percentage}%,
       transparent ${percentage}% 100%
     )`,
     transform: "rotate(90deg)",
