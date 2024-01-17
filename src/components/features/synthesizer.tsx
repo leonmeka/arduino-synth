@@ -6,28 +6,29 @@ import {
   useEffect,
   useState,
 } from "react";
-import { Card, CardContent } from "../ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { SynthContext } from "@/App";
 import { Oscillator } from "./oscillator";
-import { Input } from "../ui/input";
-import { RadialKnob } from "../radial-knob";
+import { Input } from "@/components/ui/input";
+import { RadialKnob } from "@/components/radial-knob";
 import { Label } from "@radix-ui/react-label";
 import { Volume, VolumeX } from "lucide-react";
 
 const ctx = new AudioContext();
+const FFT_SIZE = 1024;
 
 // Master Analyser for combined signal
 const masterAnalyser = ctx.createAnalyser();
-masterAnalyser.fftSize = 2048;
+masterAnalyser.fftSize = FFT_SIZE;
 masterAnalyser.connect(ctx.destination);
 
 // Individual Analysers for each oscillator
 const analyser1 = ctx.createAnalyser();
-analyser1.fftSize = 2048;
+analyser1.fftSize = FFT_SIZE;
 analyser1.connect(ctx.destination);
 
 const analyser2 = ctx.createAnalyser();
-analyser2.fftSize = 2048;
+analyser2.fftSize = FFT_SIZE;
 analyser2.connect(ctx.destination);
 
 // Master Gain to combine signals

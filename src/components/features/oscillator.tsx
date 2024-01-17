@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { Card, CardContent } from "../ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 
 interface OscillatorProps {
   analyser: AnalyserNode;
@@ -24,7 +24,7 @@ export const Oscillator = ({ analyser, color }: OscillatorProps) => {
       analyser.getByteTimeDomainData(dataArray);
 
       context.clearRect(0, 0, canvas.width, canvas.height);
-      context.lineWidth = 1;
+      context.lineWidth = 1.5;
       context.strokeStyle = color === "orange" ? "#F97316" : "#718096";
       context.beginPath();
 
