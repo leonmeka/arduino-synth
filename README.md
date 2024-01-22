@@ -4,7 +4,8 @@ A micro-controller based synthesizer leveraging the Web Serial API.
 
 This project allows for generation of two oscillating signals. Each signal can be modified through nodes as exposed by the ´Web Audio´ API. Operations can be applied via dedicated knob inputs on a micro-controller. The resulting signals are them combined and audible via your speakers.
 
-https://github.com/leonmeka/arduino-synth/assets/15350962/4461787f-cabc-4f0f-b785-eaa7df6a1245
+https://github.com/leonmeka/arduino-synth/assets/15350962/7c2ce2fe-9174-46bd-ad21-60deae4517b5
+
 
 # Usage
 
