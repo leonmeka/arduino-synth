@@ -25,7 +25,9 @@ The circuit is based on the Arduino UNO. You will need the following components:
 Switch x2, PCB x1 (bundle of 3 with the link above), Potentiometer x6, Resistors x6, Microcontroller x1,
 Wires - 20-30 single wires
 
-To assemble the circuit, follow the diagrams in the "./assets/circuits" folder. After assembling the circuit, connect the Arduino to your computer via USB.
+![final_schema](https://github.com/leonmeka/arduino-synth/assets/15350962/92978ae7-985b-487e-bdec-514a82f28c16)
+
+After assembling the circuit, connect the Arduino to your computer via USB.
 
 ## Software
 
